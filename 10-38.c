@@ -2,11 +2,11 @@
 #include<stdlib.h>
 #include<string.h>
 
-//¹é²¢ÅÅÐò
+//å½’å¹¶æŽ’åº
 void merge_sort_recursive(int arr[], int reg[], int start, int end){
     if (start >= end)
         return;
-    int len = end - start, mid = (len >> 1) + start;//>>1Ïàµ±ÓÚ/2£¬ÇÒ±È/2¿ì
+    int len = end - start, mid = (len >> 1) + start;//>>1ç›¸å½“äºŽ/2ï¼Œä¸”æ¯”/2å¿«
     int start1 = start, end1 = mid;
     int start2 = mid + 1, end2 = end;
     merge_sort_recursive(arr, reg, start1, end1);
