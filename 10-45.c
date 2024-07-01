@@ -1,42 +1,44 @@
+//TODOï¼š
+//è¿™æ˜¯åŸºæ•°æ’åºï¼Œä½†æ˜¯æš‚æ—¶æ²¡ç†è§£
 #include "staticList.h"
 const int radix = 10;
 template <class T>
 ;
 void Sort(staticlinkList<T> &L, int d)
 {
-    int rear[radix], front[radix]; // ¶ÓÎ²Óë¶ÓÍ·Ö¸Õë
+    int rear[radix], front[radix]; // é˜Ÿå°¾ä¸é˜Ÿå¤´æŒ‡é’ˆ
     int i, j, k, last, current, n = L.Length();
     for (i = 0; i < n; i++)
         L[i].link = i + 1;
-    L[n].link = 0; // ³õÊ¼»¯, Ñ­»·Á´±í
-    current = 1;   // È¡±íÔªËØ¼ÆÊı
+    L[n].link = 0; // åˆå§‹åŒ–, å¾ªç¯é“¾è¡¨
+    current = 1;   // å–è¡¨å…ƒç´ è®¡æ•°
     for (i = d; i >= 1; i--)
-    { // °´ÅÅĞòÂëkey[i]·ÖÅä
+    { // æŒ‰æ’åºç key[i]åˆ†é…
         for (j = 0; j < radix; j++)
             front[j] = 0;
         while (current != 0)
-        {                                // ·ÖÅä
-            k = getDigit(L[current], i); // È¡µÚi¸öÅÅĞòÂë
+        {                                // åˆ†é…
+            k = getDigit(L[current], i); // å–ç¬¬iä¸ªæ’åºç 
             if (front[k] == 0)
                 front[k] = current;
-            // µÚk¸ö¶ÓÁĞ¿Õ, ¸ÃÔªËØÎª¶ÓÍ·
+            // ç¬¬kä¸ªé˜Ÿåˆ—ç©º, è¯¥å…ƒç´ ä¸ºé˜Ÿå¤´
             else
-                L[rear[k]].link = current; // ²»¿Õ, Î²Á´½Ó
-            rear[k] = current;             // ¸ÃÔªËØ³ÉÎªĞÂµÄ¶ÓÎ²
-            current = L[current].link;     // ÏÂÒ»¸öÔªËØ
+                L[rear[k]].link = current; // ä¸ç©º, å°¾é“¾æ¥
+            rear[k] = current;             // è¯¥å…ƒç´ æˆä¸ºæ–°çš„é˜Ÿå°¾
+            current = L[current].link;     // ä¸‹ä¸€ä¸ªå…ƒç´ 
         }
-        j = 0; // ÒÀ´Î´Ó¸÷¶ÓÁĞÊÕ¼¯²¢À­Á´
+        j = 0; // ä¾æ¬¡ä»å„é˜Ÿåˆ—æ”¶é›†å¹¶æ‹‰é“¾
         while (front[j] == 0)
-            j++;                        // Ìø¹ı¿Õ¶ÓÁĞ
-        L[0].link = current = front[j]; // ĞÂÁ´±íµÄÁ´
-        last = rear[j];                 // ·Ç¿Õ¶ÓÁĞÁ´Î²
-        for (k = j + 1; k < radix; k++) // Á¬½ÓÆäÓà¶ÓÁĞ
+            j++;                        // è·³è¿‡ç©ºé˜Ÿåˆ—
+        L[0].link = current = front[j]; // æ–°é“¾è¡¨çš„é“¾
+        last = rear[j];                 // éç©ºé˜Ÿåˆ—é“¾å°¾
+        for (k = j + 1; k < radix; k++) // è¿æ¥å…¶ä½™é˜Ÿåˆ—
             if (front[k] != 0)
-            { // ¶ÓÁĞ·Ç¿Õ
+            { // é˜Ÿåˆ—éç©º
                 L[last].link = front[k];
-                // Ç°Ò»·Ç¿Õ¶ÓÁĞ¶ÓÎ²Á´½Óµ½µÚk¶ÓÁĞ¶ÓÍ·
-                last = rear[k]; // ¼ÇµÚk¶ÓÁĞ¶ÓÎ²
+                // å‰ä¸€éç©ºé˜Ÿåˆ—é˜Ÿå°¾é“¾æ¥åˆ°ç¬¬ké˜Ÿåˆ—é˜Ÿå¤´
+                last = rear[k]; // è®°ç¬¬ké˜Ÿåˆ—é˜Ÿå°¾
             }
-        L[last].link = 0; // ĞÂÁ´±í±íÎ²
-    } // ÏÂÒ»ÌË·ÖÅäÓëÊÕ¼¯
+        L[last].link = 0; // æ–°é“¾è¡¨è¡¨å°¾
+    } // ä¸‹ä¸€è¶Ÿåˆ†é…ä¸æ”¶é›†
 };
